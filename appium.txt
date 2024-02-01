@@ -1,11 +1,7 @@
 [caps]
-automationName = 'XCUITest'
-platformName = 'iOS'
-platformVersion = '17.2'
-deviceName = 'iPhone 15'
-# deviceName = 'Test_iPhone'
-# udid = '00008030-000478EC22E3802E'
-# app = '/Users/walt/GithubProjects/cucumber_ruby_appium/apps/TheApp-v1.10.0.ipa'
-app = '/Users/walt/GithubProjects/cucumber_ruby_appium/apps/TheApp.app.zip'
+platformName = 'Android'
+deviceName = 'Pixel 6 API 31'
+app = '/Users/walt/GithubProjects/cucumber_ruby_appium/apps/TheApp.apk'
+automationName = 'UiAutomator2'
 [appium_lib]
 sauce_username = false
