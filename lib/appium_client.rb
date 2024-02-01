@@ -2,14 +2,14 @@ require 'singleton'
 # AppiumClient
 # starts, stops and maintains the client
 class AppiumClient
-  attr_accessor :driver
+  attr_accessor :driver, :caps
 
   include Singleton
 
   def setup
     appium_txt = File.join(Dir.pwd, 'appium.txt')
-    caps = Appium.load_appium_txt(file: appium_txt)
-    @driver = Appium::Driver.new(caps)
+    @caps = Appium.load_appium_txt(file: appium_txt)
+    @driver = Appium::Driver.new(@caps)
   end
 end
 

@@ -1,4 +1,6 @@
 require 'appium_lib'
+require 'rspec'
+require 'test/unit/assertions'
 
 Dir[File.join(File.dirname(__FILE__), '../../lib', '**', '*.rb')].each { |f| require f }
 Dir[File.join(File.dirname(__FILE__), '../../screens', '**', '*.rb')].each { |f| require f }
@@ -10,5 +12,3 @@ sleep(10)
 
 apm.setup
 apm.driver.start_driver
-# just giving time here``
-sleep(10)
