@@ -1,0 +1,189 @@
+# Basic Rubocop configuration.
+AllCops:
+  NewCops: enable
+  Include:
+    - '**/*.rb'
+    - '**/Rakefile'
+  Exclude:
+    - 'node_modules/**/*'
+Layout/LineLength:
+  Max: 150
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # containing a URI to be longer than Max.
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: false
+  # The IgnoredPatterns option is a list of !ruby/regexp and/or string
+  # elements. Strings will be converted to Regexp objects. A line that matches
+  # any regular expression listed in this option will be ignored by LineLength.
+  AllowedPatterns: []
+Metrics/MethodLength:
+  Max: 55
+# Don't care how many lines in a class
+Metrics/ClassLength:
+  Max: 500
+Metrics/ModuleLength:
+  Max: 250
+Metrics/BlockLength:
+  Max: 55
+Metrics/CyclomaticComplexity:
+  Max: 15
+# http://wiki.c2.com/?AbcMetric
+# AbcSize refers to the number of assignments, branches, and conditions for a
+#  section of code
+Metrics/AbcSize:
+  Max: 55
+Metrics/PerceivedComplexity:
+  Max: 15
+# IndentHash looks at the way a Hash is formatted
+Layout/FirstHashElementIndentation:
+  Enabled: false
+# MutableConstant checks if you've got a .freeze at the end of any hash or array
+# We have both hashes and arrays that we want to change at runtime so this isn't good
+Style/MutableConstant:
+  Enabled: false
+# we currently have a couple of methods with the 'get_' prefix so disabling this check
+Naming/AccessorMethodName:
+  Enabled: false
+Naming/VariableNumber:
+  Enabled: false
+Layout/TrailingEmptyLines:
+  Enabled: true
+Style/ParallelAssignment:
+  Enabled: true
+Layout/FirstArgumentIndentation:
+  Enabled: true
+Style/NumericPredicate:
+  Enabled: false
+Layout/SpaceInsideStringInterpolation:
+  Enabled: true
+# FrozenStringLiteralComment has us put a magic comment at the beginning of each file
+# which is a pain, see
+# https://rubydoc.info/gems/rubocop/RuboCop/Cop/Style/FrozenStringLiteralComment
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/SafeNavigation:
+  Enabled: true
+Style/TrivialAccessors:
+  Enabled: false
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: false
+Style/MixinUsage:
+  Enabled: true
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: true
+Lint/DuplicateElsifCondition:
+  Enabled: true
+Lint/DuplicateRescueException:
+  Enabled: true
+Lint/EmptyConditionalBody:
+  Enabled: true
+Lint/FloatComparison:
+  Enabled: true
+Lint/MissingSuper:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Lint/OutOfRangeRegexpRef:
+  Enabled: true
+Lint/SelfAssignment:
+  Enabled: true
+Lint/TopLevelReturnWithArgument:
+  Enabled: true
+Lint/UnreachableLoop:
+  Enabled: true
+Lint/NonAtomicFileOperation:
+  Enabled: false
+Style/AccessorGrouping:
+  Enabled: true
+Style/ArrayCoercion:
+  Enabled: true
+Style/BisectedAttrAccessor:
+  Enabled: true
+Style/CaseLikeIf:
+  Enabled: true
+Style/ExplicitBlockArgument:
+  Enabled: true
+Style/GlobalStdStream:
+  Enabled: true
+Style/HashAsLastArrayItem:
+  Enabled: true
+Style/HashLikeCase:
+  Enabled: true
+Style/OptionalBooleanParameter:
+  Enabled: true
+Style/RedundantAssignment:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: false
+Style/RedundantArgument:
+  Enabled: false
+Style/SingleArgumentDig:
+  Enabled: true
+Style/StringConcatenation:
+  Enabled: true
+Style/OpenStructUse:
+  Enabled: false
+Layout/BeginEndAlignment:
+  Enabled: true
+Lint/ConstantDefinitionInBlock:
+  Enabled: true
+Lint/DuplicateRequire:
+  Enabled: true
+Lint/EmptyFile:
+  Enabled: true
+Lint/IdentityComparison:
+  Enabled: true
+Lint/TrailingCommaInAttributeDeclaration:
+  Enabled: true
+Lint/UselessMethodDefinition:
+  Enabled: true
+Lint/UselessTimes:
+  Enabled: true
+Style/CombinableLoops:
+  Enabled: true
+Style/KeywordParametersOrder:
+  Enabled: true
+Style/RedundantSelfAssignment:
+  Enabled: false
+Style/RedundantSelf:
+  Enabled: false
+Style/SoleNestedConditional:
+  Enabled: true
+Lint/HashCompareByIdentity:
+  Enabled: true
+Lint/RedundantSafeNavigation:
+  Enabled: true
+Style/ClassEqualityComparison:
+  Enabled: true

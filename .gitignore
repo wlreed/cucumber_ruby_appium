@@ -1,0 +1,9 @@
+# test apps don't need to be committed
+apps
+
+# Apple stuff
+*.DS_Store
+
+# visual studio stuff
+.vscode
+
