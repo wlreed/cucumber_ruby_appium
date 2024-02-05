@@ -11,25 +11,11 @@ class ScreenFactory
     user_screen: 'Secret Area'
   }
 
-  IOS_SCREEN_MAP = {
-    SCREEN_DICTIONARY[:home_screen] => ::HomeScreen,
-    SCREEN_DICTIONARY[:login_screen] => ::LoginScreen,
-    SCREEN_DICTIONARY[:user_screen] => ::IOSUserScreen
-  }
-
-  ANDROID_SCREEN_MAP = {
+  SCREEN_MAP = {
     SCREEN_DICTIONARY[:home_screen] => ::HomeScreen,
     SCREEN_DICTIONARY[:login_screen] => ::LoginScreen,
     SCREEN_DICTIONARY[:user_screen] => ::AndroidUserScreen
   }
-
-  def os_screen_map
-    if apm.caps[:caps][:platformName].downcase == 'ios'
-      ::IOSUserScreen
-    else
-      ::AndroidUserScreen
-    end
-  end
 
   def fetch_current_screen
     puts 'fetching screen'
@@ -40,18 +26,14 @@ class ScreenFactory
     # check for alerts should probably go here
 
     current_screen_xml = Nokogiri::XML(apm.driver.driver.page_source)
-    elements = current_screen_xml.xpath('//XCUIElementTypeStaticText')
+    elements = current_screen_xml.xpath('//android.widget.TextView')
     values = SCREEN_DICTIONARY.values
     elements.each do |element|
       puts "CURRENT_ELEMENT: #{element}"
-      if values.include? element.attr('name')
-        puts "FOUND: #{element.attr('name')}"
-        if apm.caps[:caps][:platformName].downcase == 'ios'
-            return @screen = IOS_SCREEN_MAP.fetch(element.attr('name').to_s).new
-        else
-            return @screen = ANDROID_SCREEN_MAP.fetch(element.attr('name').to_s).new
-        end
-      end
+      next unless values.include? element.attr('text')
+
+      puts "FOUND: #{element.attr('text')}"
+      return @screen = SCREEN_MAP.fetch(element.attr('text').to_s).new
     end
   end
 end

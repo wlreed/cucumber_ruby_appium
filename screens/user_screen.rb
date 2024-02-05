@@ -23,7 +23,7 @@ end
 class AndroidUserScreen < IOSUserScreen
   def message
     [:xpath,
-     "//android.widget.TextScreen[contains(@text, 'You are logged')]"]
+     "//android.widget.TextView[contains(@text, 'You are logged')]"]
   end
 
   def get_logged_in_user

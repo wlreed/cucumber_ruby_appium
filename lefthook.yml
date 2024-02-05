@@ -1,0 +1,8 @@
+ pre-commit:
+   parallel: true
+   commands:
+     rubocop:
+       tags: backend style
+       glob: "*.rb"
+       run: bundle exec rubocop {staged_files} --parallel
+
