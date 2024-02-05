@@ -12,3 +12,5 @@ sleep(10)
 
 apm.setup
 apm.driver.start_driver
+
+Dir[File.join(File.dirname(__FILE__), '../../factories', '**', '*.rb')].each { |f| require f }
