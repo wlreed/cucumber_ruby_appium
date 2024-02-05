@@ -149,6 +149,7 @@ DEPENDENCIES
   appium_lib
   cucumber
   lefthook
+  nokogiri
   rake
   rspec
   rubocop
