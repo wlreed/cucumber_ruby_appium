@@ -13,4 +13,9 @@ sleep(10)
 apm.setup
 apm.driver.start_driver
 
-Dir[File.join(File.dirname(__FILE__), '../../factories', '**', '*.rb')].each { |f| require f }
+# Dir[File.join(File.dirname(__FILE__), '../../factories', '**', '*.rb')].each { |f| require f }
+if apm.caps[:caps][:platformName].downcase == 'ios'
+  require_relative '../../factories/ios_screen_factory'
+else
+  require_relative '../../factories/android_screen_factory'
+end
