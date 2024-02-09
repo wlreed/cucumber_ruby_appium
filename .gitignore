@@ -6,4 +6,11 @@ apps
 
 # visual studio stuff
 .vscode
+bin
 
+# test results
+results
+.bundle
+cucumber.json
+junit
+results.html

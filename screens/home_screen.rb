@@ -2,7 +2,7 @@
 # represents first screen of app
 class HomeScreen
   def initialize
-    puts "initializing #{self.class}"
+    log.info "initializing #{self.class}"
     @element_map = {
       login: [:accessibility_id, 'Login Screen']
     }
