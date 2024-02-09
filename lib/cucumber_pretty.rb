@@ -15,7 +15,7 @@ require 'cucumber/formatter/ast_lookup'
 #
 # This formatter relies on monkey patch io.rb, which should be located in the same
 # directory
-module MetaLogging
+module CucumberLogging
   # The formatter used for <tt>--format MetaLogging::MetaPretty</tt> (the meta-automation formatter).
   #
   # This formatter prints features to plain text - exactly how they were parsed,
@@ -23,7 +23,7 @@ module MetaLogging
   #
   # If the output is STDOUT (and not a file), there are bright colours to watch too.
   #
-  class MetaPretty
+  class ProjectPretty
     include FileUtils
     include Cucumber::Formatter::Console
     include Cucumber::Formatter::Io
@@ -301,10 +301,10 @@ module MetaLogging
     def print_keyword_name(keyword, name, indent_amount, location = nil)
       line = "#{keyword}:"
       line += " #{name}"
-      @io.print(indent(line, indent_amount))
+      @io.split_puts(indent(line, indent_amount))
       if location && options[:source]
         line_comment = indent(format_string("# #{location}", :comment), @source_indent - line.length - indent_amount)
-        @io.print(line_comment)
+        @io.split_puts(line_comment)
       end
       @io.split_puts
     end
@@ -411,10 +411,10 @@ module MetaLogging
       scenario_outline.steps.each do |step|
         print_comments(step.location.line, 4)
         step_line = "    #{step.keyword}#{step.text}"
-        @io.print(format_string(step_line, :skipped))
+        @io.split_puts(format_string(step_line, :skipped))
         if options[:source]
           comment_line = format_string("# #{current_feature_uri}:#{step.location.line}", :comment)
-          @io.print(indent(comment_line, @source_indent - step_line.length))
+          @io.split_puts(indent(comment_line, @source_indent - step_line.length))
         end
         @io.split_puts
         next if options[:no_multiline]
@@ -445,8 +445,8 @@ module MetaLogging
 
     def print_row_data(test_case, result)
       print_comments(test_case.location.lines.max, 6)
-      @io.print(indent(format_string(gherkin_source.split("\n")[test_case.location.lines.max - 1].strip, result.to_sym), 6))
-      @io.print(indent(format_string(@test_step_output.join(', '), :tag), 2)) unless @test_step_output.empty?
+      @io.split_puts(indent(format_string(gherkin_source.split("\n")[test_case.location.lines.max - 1].strip, result.to_sym), 6))
+      @io.split_puts(indent(format_string(@test_step_output.join(', '), :tag), 2)) unless @test_step_output.empty?
       @test_step_output = []
       @io.split_puts
       if result.failed? || result.pending?

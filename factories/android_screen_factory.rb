@@ -18,7 +18,7 @@ class ScreenFactory
   }
 
   def fetch_current_screen
-    puts 'fetching screen'
+    log.info 'fetching screen'
     # screen_name = nil
     current_screen_classes = apm.driver.get_page_class
     @screen if current_screen_classes == @screen_classes
@@ -29,10 +29,10 @@ class ScreenFactory
     elements = current_screen_xml.xpath('//android.widget.TextView')
     values = SCREEN_DICTIONARY.values
     elements.each do |element|
-      puts "CURRENT_ELEMENT: #{element}"
+      log.debug "CURRENT_ELEMENT: #{element}"
       next unless values.include? element.attr('text')
 
-      puts "FOUND: #{element.attr('text')}"
+      log.info "FOUND: #{element.attr('text')}"
       return @screen = SCREEN_MAP.fetch(element.attr('text').to_s).new
     end
   end
