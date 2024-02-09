@@ -2,7 +2,7 @@
 # sample login Screen
 class LoginScreen
   def initialize
-    puts "initializing #{self.class}"
+    log.info "initializing #{self.class}"
 
     @element_map = {
       username: [:accessibility_id, 'username'],

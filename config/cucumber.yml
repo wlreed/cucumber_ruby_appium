@@ -1,1 +1,12 @@
-default: --publish-quiet
+<% html = File.expand_path("./results.html")
+  screenshot = File.expand_path("./test-screenshot-log.txt")
+  junit = File.expand_path("./junit/")
+  json = File.expand_path("./cucumber.json")
+  format = "--format html --out=#{html}"
+  format += " --format junit --out=#{junit}"
+  format += " --format json --out=#{json}"
+  ENV['META_CUCUMBER_OUTPUT_FILES'] = [html, json].join(', ')
+%>
+default:  --publish-quiet --backtrace --format MetaLogging::MetaPretty <%= format %>
+#default:  --publish-quiet --backtrace --format 'Slowhandcuke::Formatter'
+# default:  --publish-quiet --backtrace --format pretty <%= format %>

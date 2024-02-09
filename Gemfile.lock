@@ -19,6 +19,7 @@ GEM
     chronic_duration (0.10.6)
       numerizer (~> 0.1.1)
     coderay (1.1.3)
+    concurrent-ruby (1.2.3)
     cucumber (9.1.2)
       builder (~> 3.2, >= 3.2.4)
       cucumber-ci-environment (~> 9.2, >= 9.2.0)
@@ -122,6 +123,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_logger (4.15.0)
+      concurrent-ruby (~> 1.0)
+    slowhandcuke (0.0.3)
+      cucumber
     spec (5.3.4)
       chronic_duration (~> 0.10.2)
     sys-uname (1.2.3)
@@ -154,6 +159,8 @@ DEPENDENCIES
   rspec
   rubocop
   rubocop-rspec
+  semantic_logger
+  slowhandcuke
   test-unit
 
 BUNDLED WITH

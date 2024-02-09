@@ -9,7 +9,7 @@ class IOSUserScreen
   end
 
   def initialize
-    puts "initializing #{self.class}"
+    log.info "initializing #{self.class}"
   end
 
   def get_logged_in_user

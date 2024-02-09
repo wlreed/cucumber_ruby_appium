@@ -10,8 +10,10 @@ class AppiumServer
     @server_args = 'appium --base-path /wd/hub'
   end
 
-  def start_server
-    @server_pid = spawn(@server_args)
+  def start_server(log_dir)
+    log_file = "#{log_dir}/appium-server.txt"
+    @server_pid = spawn(@server_args, err: :out, out: [log_file, 'w'])
+    log.info "Appium server log is: #{log_file}"
   end
 
   def stop_server
