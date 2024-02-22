@@ -358,7 +358,7 @@ module CucumberLogging
       indent = options[:source] ? @source_indent - step_keyword.length - test_step.text.length - base_indent : nil
       print_comments(test_step.location.lines.max, base_indent)
       name_to_report = format_step(step_keyword, @step_matches.fetch(test_step.to_s) do
-                                                   NoStepMatch.new(test_step, test_step.text)
+                                                   Cucumber::NoStepMatch.new(test_step, test_step.text)
                                                  end, result.to_sym, indent)
       @io.split_puts(indent(name_to_report, base_indent))
       print_multiline_argument(test_step, result, base_indent + 2) unless options[:no_multiline]

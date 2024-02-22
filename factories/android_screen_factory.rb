@@ -8,13 +8,15 @@ class ScreenFactory
   SCREEN_DICTIONARY = {
     home_screen: 'TheApp',
     login_screen: 'Login',
-    user_screen: 'Secret Area'
+    user_screen: 'Secret Area',
+    echo_box_screen: 'Echo Screen'
   }
 
   SCREEN_MAP = {
     SCREEN_DICTIONARY[:home_screen] => ::HomeScreen,
-    SCREEN_DICTIONARY[:login_screen] => ::LoginScreen,
-    SCREEN_DICTIONARY[:user_screen] => ::AndroidUserScreen
+    SCREEN_DICTIONARY[:login_screen] => ::AndroidLoginScreen,
+    SCREEN_DICTIONARY[:user_screen] => ::AndroidUserScreen,
+    SCREEN_DICTIONARY[:echo_box_screen] => ::EchoBoxScreen
   }
 
   def fetch_current_screen

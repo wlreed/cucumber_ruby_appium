@@ -7,5 +7,5 @@
   ENV['CUCUMBER_OUTPUT_FILES'] = [html,  junit, json].join(', ')
 %>
 default:  --publish-quiet --backtrace --format CucumberLogging::ProjectPretty <%= format %>
-#default:  --publish-quiet --backtrace --format 'Slowhandcuke::Formatter'
+# default:  --publish-quiet --backtrace --format 'Slowhandcuke::Formatter'
 # default:  --publish-quiet --backtrace --format pretty <%= format %>
