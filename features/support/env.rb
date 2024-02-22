@@ -4,6 +4,8 @@ require 'test/unit/assertions'
 require 'semantic_logger'
 
 Dir[File.join(File.dirname(__FILE__), '../../lib', '**', '*.rb')].each { |f| require f }
+# Base screen need to be loaded before dependencies
+require_relative '../../screens/base_screen'
 Dir[File.join(File.dirname(__FILE__), '../../screens', '**', '*.rb')].each { |f| require f }
 
 # set up results directory

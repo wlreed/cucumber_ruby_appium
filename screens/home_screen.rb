@@ -1,14 +1,19 @@
 # HomeScreen
 # represents first screen of app
-class HomeScreen
+class HomeScreen < BaseScreen
   def initialize
-    log.info "initializing #{self.class}"
     @element_map = {
-      login: [:accessibility_id, 'Login Screen']
+      login: [:accessibility_id, 'Login Screen'],
+      echo_box: [:accessibility_id, 'Echo Box']
     }
+    super
   end
 
-  def nav_to_login
-    apm.driver.wait { apm.driver.find_element(*@element_map[:login]) }.click
+  def login_button
+    find_element(*@element_map[:login])
+  end
+
+  def echo_box_button
+    find_element(*@element_map[:echo_box])
   end
 end

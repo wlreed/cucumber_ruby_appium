@@ -8,7 +8,8 @@ apps
 .vscode
 bin
 
-# test results
+# test artifacts
+appium.txt
 results
 .bundle
 cucumber.json
