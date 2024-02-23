@@ -16,7 +16,7 @@ class ScreenFactory
     SCREEN_DICTIONARY[:home_screen] => ::HomeScreen,
     SCREEN_DICTIONARY[:login_screen] => ::AndroidLoginScreen,
     SCREEN_DICTIONARY[:user_screen] => ::AndroidUserScreen,
-    SCREEN_DICTIONARY[:echo_box_screen] => ::EchoBoxScreen
+    SCREEN_DICTIONARY[:echo_box_screen] => ::AndroidEchoBoxScreen
   }
 
   def fetch_current_screen

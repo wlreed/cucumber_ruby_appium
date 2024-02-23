@@ -8,3 +8,8 @@ And(/^I enter some text$/) do
   echo_box_screen.say_something_button.send_keys('alice was here')
   echo_box_screen.send('click_message_save_button')
 end
+
+Then(/^I should see that same text saved$/) do
+  echo_box_screen = screen_factory.fetch_current_screen
+  expect(echo_box_screen.fetch_saved_message('alice was here')).to be_truthy
+end

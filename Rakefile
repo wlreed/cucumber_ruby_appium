@@ -2,7 +2,7 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 def rm_symlink
-  File.delete('appium.txt')
+  File.delete('appium.txt') if File.exist?('appium.txt')
 end
 
 def add_symlink(os)
